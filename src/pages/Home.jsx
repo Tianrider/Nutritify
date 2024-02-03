@@ -6,14 +6,13 @@ import { useState } from "react";
 
 const Home = () => {
   const [amount, setAmount] = useState(10);
+  const [mode, setMode] = useState("topTrack");
 
   const handleDownload = () => {
     const tableElement = document.getElementById("nutritionTable");
     if (tableElement) {
       html2canvas(tableElement).then((canvas) => {
         const imageURL = canvas.toDataURL("image/png");
-
-        // Optionally, you can trigger a download
         const a = document.createElement("a");
         a.href = imageURL;
         a.download = "Nutritify_Fact.png";
@@ -42,7 +41,7 @@ const Home = () => {
             height: "auto",
           }}
         >
-          <NutritionTable amount={amount} />
+          <NutritionTable amount={amount} mode={mode} />
           <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
             <InputLabel id="demo-simple-select-filled-label">Amount</InputLabel>
             <Select
@@ -54,6 +53,19 @@ const Home = () => {
               <MenuItem value={10}>10</MenuItem>
               <MenuItem value={20}>20</MenuItem>
               <MenuItem value={30}>30</MenuItem>
+            </Select>
+          </FormControl>
+
+          <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
+            <InputLabel id="demo-simple-select-filled-label">Metric</InputLabel>
+            <Select
+              labelId="demo-simple-select-filled-label"
+              id="demo-simple-select-filled"
+              onChange={(e) => setMode(e.target.value)}
+              value={mode}
+            >
+              <MenuItem value="recentlyPlayed">Recently Played</MenuItem>
+              <MenuItem value="topTrack">Top Tracks</MenuItem>
             </Select>
           </FormControl>
         </Box>

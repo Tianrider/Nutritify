@@ -10,7 +10,8 @@ const Home = () => {
     url += "&response_type=code";
     url += "&redirect_uri=" + encodeURIComponent(redirect_uri);
     url += "&show_dialog=true";
-    url += "&scope=" + encodeURIComponent("user-read-recently-played");
+    url +=
+      "&scope=" + encodeURIComponent("user-read-recently-played user-top-read");
     window.location.href = url;
   }
 

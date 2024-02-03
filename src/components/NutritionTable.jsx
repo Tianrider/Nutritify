@@ -5,26 +5,34 @@ const NutritionTable = (props) => {
   const clientID = "b1a2a9d825c54f6698004b762712075b";
   const clientSecret = "0fb53aec7f00405099eb58199050a974";
   const redirect_uri = "http://localhost:5173/Home";
-  const [recentlyPlayedData, setRecentlyPlayedData] = useState([]);
+  const [tracksData, setTracksData] = useState([]);
   const [totalMinutes, setTotalMinutes] = useState(0);
   const [token, setToken] = useState(null);
 
   useEffect(() => {
+    const handleRedirect = async () => {
+      console.log("Handling redirect");
+      let code = getCode();
+      if (code) {
+        console.log(code);
+        await getToken(code);
+      }
+    };
     handleRedirect();
   }, []);
 
   useEffect(() => {
-    getTracks();
-  }, [token, props.amount]);
-
-  const handleRedirect = async () => {
-    console.log("Handling redirect");
-    let code = getCode();
-    if (code) {
-      console.log(code);
-      await getToken(code);
+    function changesMade() {
+      if (token) {
+        if (props.mode === "recentlyPlayed") {
+          getTracks();
+        } else if (props.mode === "topTrack") {
+          getTopTracks();
+        }
+      }
     }
-  };
+    changesMade();
+  }, [token, props.amount, props.mode]);
 
   function getCode() {
     let code = null;
@@ -57,28 +65,74 @@ const NutritionTable = (props) => {
     });
 
     const data = await result.json();
-    console.log(data);
     setToken(data.access_token);
   };
 
-  const getTracks = async () => {
-    console.log(token);
-    const result = await fetch(
-      `https://api.spotify.com/v1/me/player/recently-played?limit=${props.amount}`,
-      {
-        method: "GET",
-        headers: { Authorization: "Bearer " + token },
-      }
-    );
+  const fetchData = async (url) => {
+    const result = await fetch(url, {
+      method: "GET",
+      headers: { Authorization: "Bearer " + token },
+    });
 
     const data = await result.json();
-    setRecentlyPlayedData(data.items);
+
+    return data;
+  };
+
+  const formatDuration = (durationMs) => {
+    const durationMinutes = Math.floor(durationMs / 60000);
+    const durationSeconds = (
+      "0" + ((durationMs % 60000) / 1000).toFixed(0)
+    ).slice(-2);
+    return `${durationMinutes}:${durationSeconds}`;
+  };
+
+  const getTracks = async () => {
+    const data = await fetchData(
+      "https://api.spotify.com/v1/me/player/recently-played?limit=" +
+        props.amount
+    );
+
+    const modifiedData = data.items.map((item) => {
+      const formattedDuration = formatDuration(item.track.duration_ms);
+      return {
+        id: item.track.id,
+        name: item.track.name,
+        artist: item.track.artists[0].name,
+        duration: formattedDuration,
+      };
+    });
 
     const totalDuration = data.items.reduce((acc, song) => {
       return acc + Math.floor(song.track.duration_ms / 60000);
     }, 0);
-
     setTotalMinutes(totalDuration);
+
+    setTracksData(modifiedData);
+  };
+
+  const getTopTracks = async () => {
+    const data = await fetchData(
+      "https://api.spotify.com/v1/me/top/tracks?limit=" + props.amount
+    );
+
+    const modifiedData = data.items.map((item) => {
+      const formattedDuration = formatDuration(item.duration_ms);
+
+      return {
+        id: item.id,
+        name: item.name,
+        artist: item.artists[0].name,
+        duration: formattedDuration,
+      };
+    });
+    // total duration
+    const totalDuration = data.items.reduce((acc, song) => {
+      return acc + Math.floor(song.duration_ms / 60000);
+    }, 0);
+    setTotalMinutes(totalDuration);
+
+    setTracksData(modifiedData);
   };
 
   return (
@@ -111,20 +165,13 @@ const NutritionTable = (props) => {
                 <strong>DME*</strong>
               </th>
             </tr>
-            {recentlyPlayedData?.map((song) => {
-              const durationMs = song.track.duration_ms;
-              const durationMinutes = Math.floor(durationMs / 60000);
-              const durationSeconds = (
-                "0" + ((durationMs % 60000) / 1000).toFixed(0)
-              ).slice(-2);
-              const formattedDuration = `${durationMinutes}:${durationSeconds}`;
-
+            {tracksData?.map((song) => {
               return (
                 <Song
-                  key={song.track.id}
-                  title={song.track.name}
-                  artist={song.track.artists[0].name}
-                  duration={formattedDuration}
+                  key={song.id}
+                  title={song.name}
+                  artist={song.artist}
+                  duration={song.duration}
                 />
               );
             })}
