@@ -2,7 +2,6 @@ import Footer from "../components/Footer";
 
 const Login = () => {
   const clientID = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
-  console.log(clientID);
   const redirect_uri = "http://localhost:5173/Home";
 
   function getAuthorization() {
