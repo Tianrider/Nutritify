@@ -136,7 +136,7 @@ const NutritionTable = (props) => {
   };
 
   return (
-    <div id="nutritionTable" style={{ padding: 0 }}>
+    <div id="nutritionTable" className=" bg-white">
       <section className="nutrition-facts">
         <header>
           <h1>Nutritify Facts</h1>

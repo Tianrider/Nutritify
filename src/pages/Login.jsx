@@ -1,6 +1,6 @@
-import { Box, Button } from "@mui/material";
+import Footer from "../components/Footer";
 
-const Home = () => {
+const Login = () => {
   const clientID = "b1a2a9d825c54f6698004b762712075b";
   const redirect_uri = "http://localhost:5173/Home";
 
@@ -17,22 +17,23 @@ const Home = () => {
 
   return (
     <div>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-          flexDirection: "column",
-        }}
-      >
-        <h1>Home</h1>
-        <Button variant="outlined" onClick={getAuthorization}>
-          Log in with Spotify
-        </Button>
-      </Box>
+      <div className="h-[93vh] flex justify-center flex-col">
+        <div className="flex flex-col justify-between items-center min-h-80">
+          <h1 className="text-white font-sans text-8xl">nutritify</h1>
+          <h3 className="text-white font-serif text-xl">
+            Because Wellness Starts with Harmony
+          </h3>
+          <button
+            onClick={getAuthorization}
+            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full h-12"
+          >
+            Log In With Spotify
+          </button>
+        </div>
+      </div>
+      <Footer />
     </div>
   );
 };
 
-export default Home;
+export default Login;
