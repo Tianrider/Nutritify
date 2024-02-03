@@ -2,9 +2,9 @@ import Song from "./Song";
 import { useEffect, useState } from "react";
 
 const NutritionTable = (props) => {
-  const clientID = "b1a2a9d825c54f6698004b762712075b";
-  const clientSecret = "0fb53aec7f00405099eb58199050a974";
-  const redirect_uri = "http://localhost:5173/Home";
+  const clientID = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
+  const clientSecret = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET;
+  const redirect_uri = "http://nutritify.vercel.app/Home";
   const [tracksData, setTracksData] = useState([]);
   const [totalMinutes, setTotalMinutes] = useState(0);
   const [token, setToken] = useState(null);
