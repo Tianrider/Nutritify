@@ -2,7 +2,7 @@ import Footer from "../components/Footer";
 
 const Login = () => {
   const clientID = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
-  const redirect_uri = "https://nutritify.vercel.app/Home";
+  const redirect_uri = "/Home";
 
   function getAuthorization() {
     let url = "https://accounts.spotify.com/authorize";
