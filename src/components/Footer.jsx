@@ -7,21 +7,21 @@ const Footer = () => {
       </h1>
       <div className="flex flex-row text-white gap-3 md:gap-4 w-[25vw] justify-center">
         <a
-          className="underline cursor-pointer"
+          className="hover:underline cursor-pointer"
           href="https://instagram.com/tianhd_"
           target="blank"
         >
           instagram
         </a>
         <a
-          className="underline cursor-pointer"
+          className="hover:underline cursor-pointer"
           href="https://github.com/Tianrider"
           target="blank"
         >
           github
         </a>
         <a
-          className="underline cursor-pointer"
+          className="hover:underline cursor-pointer"
           href="https://www.linkedin.com/in/christianhadiwijaya"
           target="blank"
         >

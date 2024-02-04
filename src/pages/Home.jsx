@@ -10,10 +10,19 @@ import domtoimage from "dom-to-image";
 const Home = () => {
   const [amount, setAmount] = useState(10);
   const [mode, setMode] = useState("topTrack");
+  const table = document.getElementById("nutritionTable");
 
+  var scale = 2;
   const handleDownload = () => {
     domtoimage
-      .toPng(document.getElementById("nutritionTable"))
+      .toPng(table, {
+        width: table.clientWidth * scale,
+        height: table.clientHeight * scale,
+        style: {
+          transform: `scale(` + scale + `)`,
+          transformOrigin: "top left",
+        },
+      })
       .then((dataUrl) => {
         const link = document.createElement("a");
         link.download = "nutritionTable.png";
@@ -57,7 +66,7 @@ const Home = () => {
             onChange={(e, value) => setAmount(value)}
             className="bg-white m-3 ml-5 mr-5 md:ml-0"
             size="large"
-            sx={{ display: "flex", width: "70%" }} // Apply flexbox here
+            sx={{ display: "flex", width: "70%" }}
           >
             <ToggleButton value={10} sx={{ flex: 1 }}>
               <span className="font-bold text-xl">10</span>

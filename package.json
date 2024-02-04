@@ -13,6 +13,7 @@
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.15.7",
+    "buffer": "^6.0.3",
     "dom-to-image": "^2.6.0",
     "dotenv": "^16.4.1",
     "html2canvas": "^1.4.1",

@@ -65,6 +65,7 @@ const NutritionTable = (props) => {
     });
 
     const data = await result.json();
+    console.log(data);
     setToken(data.access_token);
   };
 
@@ -73,7 +74,7 @@ const NutritionTable = (props) => {
       method: "GET",
       headers: { Authorization: "Bearer " + token },
     });
-
+    console.log(result);
     const data = await result.json();
 
     return data;
@@ -140,7 +141,7 @@ const NutritionTable = (props) => {
       <section className="nutrition-facts">
         <header>
           <h1>Nutritify Facts</h1>
-          <p>8 servings per container</p>
+          <p>{props.amount} servings per container</p>
           <p>
             <strong>
               Serving size <span>2/3 cup (55g)</span>

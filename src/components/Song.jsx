@@ -1,6 +1,6 @@
 const Song = (props) => {
   return (
-    <tr>
+    <tr className="h-6">
       <th colSpan="1">
         <strong>{props.title}</strong>
         {" " + props.artist}
