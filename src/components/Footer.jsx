@@ -6,12 +6,33 @@ const Footer = () => {
         <span className="font-bold text-xl">Christian Hadiwijaya</span>
       </h1>
       <div className="flex flex-row text-white gap-3 md:gap-4 w-[25vw] justify-center">
-        <a className="underline cursor-pointer">instagram</a>
-        <a className="underline cursor-pointer">github</a>
-        <a className="underline cursor-pointer">linkedin</a>
+        <a
+          className="underline cursor-pointer"
+          href="https://instagram.com/tianhd_"
+          target="blank"
+        >
+          instagram
+        </a>
+        <a
+          className="underline cursor-pointer"
+          href="https://github.com/Tianrider"
+          target="blank"
+        >
+          github
+        </a>
+        <a
+          className="underline cursor-pointer"
+          href="https://www.linkedin.com/in/christianhadiwijaya"
+          target="blank"
+        >
+          linkedin
+        </a>
       </div>
       <h1 className="text-white w-full md:w-[25vw] text-center">
-        Privacy Policy <a className="underline cursor-pointer">Here</a>
+        Privacy Policy{" "}
+        <a className="underline cursor-pointer" href="/Privacy">
+          Here
+        </a>
       </h1>
     </div>
   );

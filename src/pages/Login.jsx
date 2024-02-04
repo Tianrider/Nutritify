@@ -1,8 +1,9 @@
 import Footer from "../components/Footer";
+import logo from "../assets/nutritify_logo.svg";
 
 const Login = () => {
   const clientID = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
-  const redirect_uri = "http://localhost:5173/Home";
+  const redirect_uri = "https://nutritify.vercel.app/Home";
 
   function getAuthorization() {
     let url = "https://accounts.spotify.com/authorize";
@@ -19,15 +20,15 @@ const Login = () => {
     <div>
       <div className="h-[93vh] flex justify-center flex-col">
         <div className="flex flex-col justify-between items-center min-h-80">
-          <h1 className="text-white font-sans text-8xl">nutritify</h1>
+          <img src={logo} alt="Nutritify Logo" className="w-90 md:scale-150" />
           <h3 className="text-white font-serif text-xl">
-            Because Wellness Starts with Harmony
+            how's your music taste affecting your health
           </h3>
           <button
             onClick={getAuthorization}
             className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full h-12"
           >
-            Log In With Spotify
+            Login With Spotify
           </button>
         </div>
       </div>

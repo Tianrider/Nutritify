@@ -125,7 +125,7 @@ section {
 }
 .nutrition-facts .footnote {
   font-size: 9px;
-  margin: 6px 0 -3px;
+  margin: 6px 0;
   padding-left: 1em;
   position: relative;
 }
