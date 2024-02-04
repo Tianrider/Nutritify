@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 const NutritionTable = (props) => {
   const clientID = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
   const clientSecret = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET;
-  const redirect_uri = "https://nutritify.vercel.app/Home";
+  const redirect_uri = "http://localhost:5173/Home";
   const [tracksData, setTracksData] = useState([]);
   const [totalMinutes, setTotalMinutes] = useState(0);
   const [token, setToken] = useState(null);
@@ -136,7 +136,7 @@ const NutritionTable = (props) => {
   };
 
   return (
-    <div id="nutritionTable" className=" bg-white">
+    <div id="nutritionTable">
       <section className="nutrition-facts">
         <header>
           <h1>Nutritify Facts</h1>

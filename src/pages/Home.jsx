@@ -24,59 +24,43 @@ const Home = () => {
 
   return (
     <div>
-      <div className="min-h-[93vh]">
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "auto",
-            flexDirection: "column",
-          }}
-        >
-          <h1>Nutritify</h1>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              height: "auto",
-            }}
-          >
-            <NutritionTable amount={amount} mode={mode} />
-            <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
-              <InputLabel id="demo-simple-select-filled-label">
-                Amount
-              </InputLabel>
-              <Select
-                labelId="demo-simple-select-filled-label"
-                id="demo-simple-select-filled"
-                onChange={(e) => setAmount(e.target.value)}
-                value={amount}
-              >
-                <MenuItem value={10}>10</MenuItem>
-                <MenuItem value={20}>20</MenuItem>
-                <MenuItem value={30}>30</MenuItem>
-              </Select>
-            </FormControl>
+      <div className="flex justify-center align-center">
+        <h1 className="text-white absolute text-center text-5xl">Nutritify</h1>
+      </div>
+      <div className="min-h-[93vh] flex justify-center align-center items-center gap-3">
+        <div className="bg-white inline-flex h-fit">
+          <NutritionTable amount={amount} mode={mode} />
+        </div>
 
-            <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
-              <InputLabel id="demo-simple-select-filled-label">
-                Metric
-              </InputLabel>
-              <Select
-                labelId="demo-simple-select-filled-label"
-                id="demo-simple-select-filled"
-                onChange={(e) => setMode(e.target.value)}
-                value={mode}
-              >
-                <MenuItem value="recentlyPlayed">Recently Played</MenuItem>
-                <MenuItem value="topTrack">Top Tracks</MenuItem>
-              </Select>
-            </FormControl>
-          </Box>
-          <button onClick={handleDownload}>Download as Image</button>
-        </Box>
+        <div className="flex gap-3">
+          <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
+            <InputLabel id="demo-simple-select-filled-label">Amount</InputLabel>
+            <Select
+              labelId="demo-simple-select-filled-label"
+              id="demo-simple-select-filled"
+              onChange={(e) => setAmount(e.target.value)}
+              value={amount}
+            >
+              <MenuItem value={10}>10</MenuItem>
+              <MenuItem value={20}>20</MenuItem>
+              <MenuItem value={30}>30</MenuItem>
+            </Select>
+          </FormControl>
+
+          <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
+            <InputLabel id="demo-simple-select-filled-label">Metric</InputLabel>
+            <Select
+              labelId="demo-simple-select-filled-label"
+              id="demo-simple-select-filled"
+              onChange={(e) => setMode(e.target.value)}
+              value={mode}
+            >
+              <MenuItem value="recentlyPlayed">Recently Played</MenuItem>
+              <MenuItem value="topTrack">Top Tracks</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
+        {/* <button onClick={handleDownload}>Download as Image</button> */}
       </div>
       <Footer />
     </div>
