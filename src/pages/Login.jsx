@@ -12,10 +12,7 @@ const Login = () => {
     url += "&redirect_uri=" + encodeURIComponent(redirect_uri);
     url += "&show_dialog=true";
     url +=
-      "&scope=" +
-      encodeURIComponent(
-        "user-read-recently-played user-top-read user-read-private user-read-email"
-      );
+      "&scope=" + encodeURIComponent("user-read-recently-played user-top-read");
     url += "&state=34fFs29kd09";
     window.location.href = url;
   }
