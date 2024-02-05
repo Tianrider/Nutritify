@@ -1,6 +1,5 @@
 import NutritionTable from "../components/NutritionTable";
 import downloadIcon from "../assets/downloadIcon.png";
-import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import { useState } from "react";
 import Footer from "../components/Footer";
 import logo from "../assets/nutritify_logo.svg";
@@ -10,6 +9,7 @@ const Home = () => {
   const [amount, setAmount] = useState(10);
   const [mode, setMode] = useState("topTrack");
   const [toggleGenre, setToggleGenre] = useState(true);
+  const [background, setBackground] = useState(0);
   const table = document.getElementById("nutritionTable");
   var scale = 2;
   const handleDownload = () => {
@@ -43,6 +43,7 @@ const Home = () => {
           amount={amount}
           mode={mode}
           toggleGenre={toggleGenre}
+          background={background}
           id="nutritionTable"
         />
         <div className="flex gap-3 flex-col justify-center items-center mt-10 mb-10 md:mb-0 md:p-10">
@@ -71,7 +72,7 @@ const Home = () => {
                 amount === 10
                   ? "text-white bg-green-500"
                   : "text-white bg-gray-700"
-              } border border-gray-500 rounded-l-lg hover:bg-green-700 focus:outline-none`}
+              } border border-gray-500 rounded-l-lg hover:bg-green-700 focus:outline-none w-20`}
               onClick={() => setAmount(10)}
             >
               Top 10
@@ -79,24 +80,60 @@ const Home = () => {
             <button
               type="button"
               className={`px-4 py-2 text-sm font-medium ${
-                amount === 20
+                amount === 15
                   ? "text-white bg-green-500"
                   : "text-white bg-gray-700"
-              } border-t border-b border-gray-500  hover:bg-green-700 focus:outline-none`}
-              onClick={() => setAmount(20)}
+              } border-t border-b border-gray-500  hover:bg-green-700 focus:outline-none w-20`}
+              onClick={() => setAmount(15)}
             >
-              Top 20
+              Top 15
             </button>
             <button
               type="button"
               className={`px-4 py-2 text-sm font-medium ${
-                amount === 30
+                amount === 20
                   ? "text-white bg-green-500"
                   : "text-white bg-gray-700"
-              } border border-gray-500 rounded-r-lg hover:bg-green-700 focus:outline-none`}
-              onClick={() => setAmount(30)}
+              } border border-gray-500 rounded-r-lg hover:bg-green-700 focus:outline-none w-20`}
+              onClick={() => setAmount(20)}
             >
-              Top 30
+              Top 20
+            </button>
+          </div>
+
+          <div className="inline-flex rounded-md shadow-sm" role="group">
+            <button
+              type="button"
+              className={`px-4 py-2 text-sm font-medium ${
+                background === 0
+                  ? "text-white bg-green-500"
+                  : "text-white bg-gray-700"
+              } border border-gray-500 rounded-l-lg hover:bg-green-700 focus:outline-none w-20`}
+              onClick={() => setBackground(0)}
+            >
+              White
+            </button>
+            <button
+              type="button"
+              className={`px-4 py-2 text-sm font-medium ${
+                background === 1
+                  ? "text-white bg-green-500"
+                  : "text-white bg-gray-700"
+              } border-t border-b border-gray-500  hover:bg-green-700 focus:outline-none w-20`}
+              onClick={() => setBackground(1)}
+            >
+              Paper 1
+            </button>
+            <button
+              type="button"
+              className={`px-4 py-2 text-sm font-medium ${
+                background === 2
+                  ? "text-white bg-green-500"
+                  : "text-white bg-gray-700"
+              } border border-gray-500 rounded-r-lg hover:bg-green-700 focus:outline-none w-25`}
+              onClick={() => setBackground(2)}
+            >
+              Paper 2
             </button>
           </div>
 

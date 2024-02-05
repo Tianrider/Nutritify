@@ -2,6 +2,8 @@ import Genres from "./Genres";
 import Song from "./Song";
 import { useEffect, useState } from "react";
 import LoadingPopup from "./LoadingPopup";
+import paperOne from "../assets/paperOne.png";
+import paperTwo from "../assets/paperTwo.png";
 
 const NutritionTable = (props) => {
   const clientID = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
@@ -224,8 +226,24 @@ const NutritionTable = (props) => {
     setPercentageData(percentageData);
   };
 
+  let backgroundStyle;
+  switch (props.background) {
+    case 1:
+      backgroundStyle = { backgroundImage: `url(${paperOne})` };
+      break;
+    case 2:
+      backgroundStyle = { backgroundImage: `url(${paperTwo})` };
+      break;
+    default:
+      backgroundStyle = { backgroundColor: "white" };
+  }
+
   return (
-    <div className="bg-white" id="nutritionTable">
+    <div
+      className="bg-cover bg-center"
+      style={backgroundStyle}
+      id="nutritionTable"
+    >
       <section className="nutrition-facts">
         <div>{isLoading ? <LoadingPopup /> : null}</div>
         <header>
