@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -23,7 +24,8 @@ section {
 .nutrition-facts thead,
 .nutrition-facts strong {
   text-align: center;
-  font-family: "Arial Black", "Arial Bold", sans-serif;
+  font-family: "Archivo Black", sans-serif;
+  font-weight: 800;
   letter-spacing: -0.03em;
 }
 .nutrition-facts h1 {
@@ -133,4 +135,7 @@ section {
   content: "*";
   position: absolute;
   left: 0;
-} /*# sourceMappingURL=style.css.map */
+}
+#totalDuration {
+  font-weight: 600;
+}
