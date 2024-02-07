@@ -3,7 +3,7 @@ import logo from "../assets/nutritify_logo.svg";
 
 const Login = () => {
   const clientID = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
-  const redirect_uri = "http://localhost:5173/Home";
+  const redirect_uri = "https://nutritify.vercel.app/Home";
 
   function getAuthorization() {
     let url = "https://accounts.spotify.com/authorize";
