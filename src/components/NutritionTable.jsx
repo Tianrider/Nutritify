@@ -9,7 +9,7 @@ import NotRegisteredPopUp from "./NotRegisteredPopUp";
 const NutritionTable = (props) => {
   const clientID = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
   const clientSecret = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET;
-  const redirect_uri = "https://nutritify.vercel.app/Home";
+  const redirect_uri = "http://localhost:5173/Home";
   const [tracksData, setTracksData] = useState([]);
   const [totalMinutes, setTotalMinutes] = useState(0);
   const [token, setToken] = useState(null);
@@ -229,7 +229,7 @@ const NutritionTable = (props) => {
     };
 
     const genreCounts = tracksData.reduce((acc, song) => {
-      const genre = artistGenres[song.genre] || song.genre;
+      const genre = artistGenres[song.artist] || song.genre;
       acc[genre] = (acc[genre] || 0) + 1;
       return acc;
     }, {});
