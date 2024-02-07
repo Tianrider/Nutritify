@@ -193,7 +193,7 @@ const Home = () => {
                   mockUpBackground === "chipsBag"
                     ? "text-white bg-green-500"
                     : "text-white bg-gray-700"
-                } border border-gray-500 rounded-l-lg hover:bg-green-700 focus:outline-none w-[90px]`}
+                } border border-gray-500 rounded-l-lg hover:bg-green-700 focus:outline-none w-[60px] md:w-[90px]`}
                 onClick={() => setMockUpBackground("chipsBag")}
               >
                 Duoritos
@@ -204,7 +204,7 @@ const Home = () => {
                   mockUpBackground === "milkBox"
                     ? "text-white bg-green-500"
                     : "text-white bg-gray-700"
-                } border-t border-b border-gray-500  hover:bg-green-700 focus:outline-none w-[90px]`}
+                } border-t border-b border-gray-500  hover:bg-green-700 focus:outline-none w-[60px] md:w-[90px]`}
                 onClick={() => setMockUpBackground("milkBox")}
               >
                 Milk
@@ -215,7 +215,7 @@ const Home = () => {
                   mockUpBackground === "matcha"
                     ? "text-white bg-green-500"
                     : "text-white bg-gray-700"
-                } border border-gray-500  hover:bg-green-700 focus:outline-none w-[90px]`}
+                } border border-gray-500  hover:bg-green-700 focus:outline-none w-[60px] md:w-[90px]`}
                 onClick={() => setMockUpBackground("matcha")}
               >
                 Green Tea
@@ -226,7 +226,7 @@ const Home = () => {
                   mockUpBackground === "ramyun"
                     ? "text-white bg-green-500"
                     : "text-white bg-gray-700"
-                } border-t border-b border-gray-500  hover:bg-green-700 focus:outline-none w-[90px]`}
+                } border-t border-b border-gray-500  hover:bg-green-700 focus:outline-none w-[60px] md:w-[90px]`}
                 onClick={() => setMockUpBackground("ramyun")}
               >
                 Ramyun
@@ -237,7 +237,7 @@ const Home = () => {
                   mockUpBackground === "nutriSari"
                     ? "text-white bg-green-500"
                     : "text-white bg-gray-700"
-                } border border-gray-500 rounded-r-lg hover:bg-green-700 focus:outline-none w-[90px]`}
+                } border border-gray-500 rounded-r-lg hover:bg-green-700 focus:outline-none w-[60px] md:w-[90px]`}
                 onClick={() => setMockUpBackground("nutriSari")}
               >
                 Nutria Sari
