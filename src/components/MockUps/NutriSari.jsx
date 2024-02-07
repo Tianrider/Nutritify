@@ -1,4 +1,5 @@
 import nutriSari from "../../assets/nutrisari.png";
+
 const NutriSari = (props) => {
   return (
     <div id="mockUpImagetoDownload">
