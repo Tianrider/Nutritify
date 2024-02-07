@@ -213,21 +213,24 @@ const NutritionTable = (props) => {
   }
 
   const genrePercentages = (tracksData) => {
+    const artistGenres = {
+      "Taylor Swift": "Swifties",
+      ["NewJeans"]: "Bunnies",
+      "One Direction": "Directioners",
+      ["IU"]: "Uaena",
+      "Olivia Rodrigo": "Livies",
+      "NCT DREAM": "NCTzen",
+      ["aespa"]: "MY",
+      ["TWICE"]: "ONCE",
+      "Girl's Generation": "S♥NE",
+      ["BTS"]: "Army",
+      ["DAY6"]: "MyDay",
+      "Stray Kids": "Stay",
+    };
+
     const genreCounts = tracksData.reduce((acc, song) => {
-      let genre;
-
-      // Check if the artist is Taylor Swift
-      if (song.artist === "Taylor Swift") {
-        genre = "Swifties";
-      } else if (song.artist === "NewJeans") {
-        genre = "Bunnies";
-      } else if (song.artist === "One Direction") {
-        genre = "Directioners";
-      } else {
-        genre = song.genre || "other";
-      }
-
-      acc[genre] = (acc[genre] || 0) + 1;
+      const artist = artistGenres[song.artist] || song.artist;
+      acc[artist] = (acc[artist] || 0) + 1;
       return acc;
     }, {});
 
