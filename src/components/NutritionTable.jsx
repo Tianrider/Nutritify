@@ -229,8 +229,8 @@ const NutritionTable = (props) => {
     };
 
     const genreCounts = tracksData.reduce((acc, song) => {
-      const artist = artistGenres[song.artist] || song.artist;
-      acc[artist] = (acc[artist] || 0) + 1;
+      const genre = artistGenres[song.genre] || song.genre;
+      acc[genre] = (acc[genre] || 0) + 1;
       return acc;
     }, {});
 
