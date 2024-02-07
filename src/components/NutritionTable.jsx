@@ -39,7 +39,7 @@ const NutritionTable = (props) => {
       }
     }
     changesMade();
-  }, [token, props.amount, props.mode]);
+  }, [token, props.amount, props.mode, props.duration]);
 
   useEffect(() => {
     genrePercentages(tracksData);
@@ -108,7 +108,10 @@ const NutritionTable = (props) => {
   const getTracks = async () => {
     const data = await fetchData(
       "https://api.spotify.com/v1/me/player/recently-played?limit=" +
-        props.amount
+        props.amount +
+        "&time_range=" +
+        props.duration +
+        "_term"
     );
 
     const modifiedData = await Promise.all(
@@ -137,7 +140,11 @@ const NutritionTable = (props) => {
 
   const getTopTracks = async () => {
     const data = await fetchData(
-      "https://api.spotify.com/v1/me/top/tracks?limit=" + props.amount
+      "https://api.spotify.com/v1/me/top/tracks?limit=" +
+        props.amount +
+        "&time_range=" +
+        props.duration +
+        "_term"
     );
 
     const modifiedData = await Promise.all(
@@ -166,7 +173,11 @@ const NutritionTable = (props) => {
 
   const getTopArtists = async () => {
     const data = await fetchData(
-      "https://api.spotify.com/v1/me/top/artists?limit=" + props.amount
+      "https://api.spotify.com/v1/me/top/artists?limit=" +
+        props.amount +
+        "&time_range=" +
+        props.duration +
+        "_term"
     );
 
     const modifiedData = data.items.map((item) => {
@@ -240,14 +251,14 @@ const NutritionTable = (props) => {
 
   return (
     <div
-      className="bg-cover bg-center"
+      className="bg-cover bg-center p-[1px] shadow-3xl"
       style={backgroundStyle}
       id="nutritionTable"
     >
       <section className="nutrition-facts">
         <div>{isLoading ? <LoadingPopup /> : null}</div>
         <header>
-          <h1 className="font-bold">Nutritify Facts</h1>
+          <h1 className="font-bold pt-1">Nutritify Facts</h1>
           <p>{props.amount} servings per container</p>
           <p>
             <strong>

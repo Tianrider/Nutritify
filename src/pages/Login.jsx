@@ -33,7 +33,7 @@ const Login = () => {
           </div>
           <button
             onClick={getAuthorization}
-            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full h-12 flex items-center justify-center gap-2"
+            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full h-12 flex items-center justify-center gap-2 shadow-lg shadow-gray-600"
           >
             <link
               type="image/png"
