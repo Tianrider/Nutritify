@@ -61,7 +61,7 @@ const Home = () => {
   };
 
   const handleMockupDownload = () => {
-    const element = document.getElementById("mockUpImage");
+    const element = document.getElementById("mockUpImagetoDownload");
     html2canvas(element, {
       backgroundColor: null,
     }).then((canvas) => {
@@ -164,7 +164,7 @@ const Home = () => {
           <button
             type="button"
             className="shadow-lg shadow-gray-600 px-3 py-3.5 text-sm font-medium text-white inline-flex items-center bg-green-500 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 rounded-lg text-center dark:bg-green-500 dark:hover:green-600 dark:focus:ring-green-800"
-            onClick={() => handleDownload}
+            onClick={handleDownload}
           >
             <img src={downloadIcon} className="w-6 mr-3"></img>
             Download as PNG
@@ -180,13 +180,11 @@ const Home = () => {
           Generate Mockup (BETA)
         </button>
         {imageUrl == null ? null : mockUpBackground === "chipsBag" ? (
-          <ChipsBag imageUrl={imageUrl} id="mockUpImage" />
+          <ChipsBag imageUrl={imageUrl} />
         ) : mockUpBackground === "milkBox" ? (
-          <MilkBox imageUrl={imageUrl} id="mockUpImage" />
+          <MilkBox imageUrl={imageUrl} />
         ) : (
-          mockUpBackground === "nutriSari" && (
-            <NutriSari imageUrl={imageUrl} id="mockUpImage" />
-          )
+          mockUpBackground === "nutriSari" && <NutriSari imageUrl={imageUrl} />
         )}
 
         {imageUrl == null ? null : (
@@ -205,7 +203,7 @@ const Home = () => {
             <button
               type="button"
               className="shadow-lg shadow-gray-700 px-3 py-3.5 w-[%] text-sm font-medium text-white inline-flex items-center bg-green-800 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-green-300 rounded-lg text-center"
-              onClick={() => handleMockupDownload}
+              onClick={handleMockupDownload}
             >
               <img src={downloadIcon} className="w-6 mr-3"></img>
               Download as PNG
