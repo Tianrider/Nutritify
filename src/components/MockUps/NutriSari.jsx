@@ -1,4 +1,4 @@
-import nutriSari from "../../assets/nutrisari.png";
+import nutriSari from "../../assets/nutrisariImage.png";
 
 const NutriSari = (props) => {
   return (
