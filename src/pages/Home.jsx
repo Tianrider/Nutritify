@@ -4,9 +4,7 @@ import { useState } from "react";
 import Footer from "../components/Footer";
 import logo from "../assets/nutritify_logo.svg";
 import domtoimage from "dom-to-image";
-import ChipsBag from "../components/ChipsBag";
-import MilkBox from "../components/MilkBox";
-import NutriSari from "../components/NutriSari";
+import DynamicMockup from "../components/DynamicMockup";
 import html2canvas from "html2canvas";
 import ButtonGroup from "../components/ButtonGroup";
 
@@ -80,7 +78,7 @@ const Home = () => {
       <div className="flex justify-center align-center m-10 mt-3 ">
         <img src={logo} alt="Nutritify Logo" />
       </div>
-      <div className="min-h-[75vh] flex justify-center items-center gap-3 flex-col md:flex-row md:items-start">
+      <div className="flex justify-center items-center gap-3 flex-col md:flex-row md:items-start">
         <NutritionTable
           amount={amount}
           mode={mode}
@@ -179,27 +177,72 @@ const Home = () => {
         >
           Generate Mockup (BETA)
         </button>
-        {imageUrl == null ? null : mockUpBackground === "chipsBag" ? (
-          <ChipsBag imageUrl={imageUrl} />
-        ) : mockUpBackground === "milkBox" ? (
-          <MilkBox imageUrl={imageUrl} />
-        ) : (
-          mockUpBackground === "nutriSari" && <NutriSari imageUrl={imageUrl} />
+        {imageUrl && (
+          <DynamicMockup
+            imageUrl={imageUrl}
+            mockUpBackground={mockUpBackground}
+          />
         )}
 
         {imageUrl == null ? null : (
           <div className="flex flex-col gap-5 mt-10 items-center">
-            <ButtonGroup
-              text1="Chips Bag"
-              active1={mockUpBackground === "chipsBag"}
-              onClick1={() => setMockUpBackground("chipsBag")}
-              text2="Milk Box"
-              active2={mockUpBackground === "milkBox"}
-              onClick2={() => setMockUpBackground("milkBox")}
-              text3="Nutri Sari"
-              active3={mockUpBackground === "nutriSari"}
-              onClick3={() => setMockUpBackground("nutriSari")}
-            />
+            <div className="inline-flex rounded-md shadow-sm" role="group">
+              <button
+                type="button"
+                className={`py-2 text-sm font-medium ${
+                  mockUpBackground === "chipsBag"
+                    ? "text-white bg-green-500"
+                    : "text-white bg-gray-700"
+                } border border-gray-500 rounded-l-lg hover:bg-green-700 focus:outline-none w-[90px]`}
+                onClick={() => setMockUpBackground("chipsBag")}
+              >
+                Duoritos
+              </button>
+              <button
+                type="button"
+                className={`py-2 text-sm font-medium ${
+                  mockUpBackground === "milkBox"
+                    ? "text-white bg-green-500"
+                    : "text-white bg-gray-700"
+                } border-t border-b border-gray-500  hover:bg-green-700 focus:outline-none w-[90px]`}
+                onClick={() => setMockUpBackground("milkBox")}
+              >
+                Milk
+              </button>
+              <button
+                type="button"
+                className={`py-2 text-sm font-medium ${
+                  mockUpBackground === "matcha"
+                    ? "text-white bg-green-500"
+                    : "text-white bg-gray-700"
+                } border border-gray-500  hover:bg-green-700 focus:outline-none w-[90px]`}
+                onClick={() => setMockUpBackground("matcha")}
+              >
+                Green Tea
+              </button>
+              <button
+                type="button"
+                className={`py-2 text-sm font-medium ${
+                  mockUpBackground === "ramyun"
+                    ? "text-white bg-green-500"
+                    : "text-white bg-gray-700"
+                } border-t border-b border-gray-500  hover:bg-green-700 focus:outline-none w-[90px]`}
+                onClick={() => setMockUpBackground("ramyun")}
+              >
+                Ramyun
+              </button>
+              <button
+                type="button"
+                className={`py-2 text-sm font-medium ${
+                  mockUpBackground === "nutriSari"
+                    ? "text-white bg-green-500"
+                    : "text-white bg-gray-700"
+                } border border-gray-500 rounded-r-lg hover:bg-green-700 focus:outline-none w-[90px]`}
+                onClick={() => setMockUpBackground("nutriSari")}
+              >
+                Nutria Sari
+              </button>
+            </div>
             <button
               type="button"
               className="shadow-lg shadow-gray-700 px-3 py-3.5 w-[%] text-sm font-medium text-white inline-flex items-center bg-green-800 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-green-300 rounded-lg text-center"

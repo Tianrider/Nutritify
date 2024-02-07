@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import LoadingPopup from "./LoadingPopup";
 import paperOne from "../assets/paperOne.png";
 import paperTwo from "../assets/paperTwo.png";
+import NotRegisteredPopUp from "./NotRegisteredPopUp";
 
 const NutritionTable = (props) => {
   const clientID = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
@@ -14,6 +15,7 @@ const NutritionTable = (props) => {
   const [token, setToken] = useState(null);
   const [percentageData, setPercentageData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isNotRegistered, setIsNotRegistered] = useState(false);
 
   useEffect(() => {
     const handleRedirect = async () => {
@@ -86,6 +88,10 @@ const NutritionTable = (props) => {
       method: "GET",
       headers: { Authorization: "Bearer " + token },
     });
+    if (result.status === 403) {
+      console.log("Error: 403 Forbidden");
+      setIsNotRegistered(true);
+    }
     const data = await result.json();
     return data;
   };
@@ -256,7 +262,8 @@ const NutritionTable = (props) => {
       id="nutritionTable"
     >
       <section className="nutrition-facts">
-        <div>{isLoading ? <LoadingPopup /> : null}</div>
+        <div>{isNotRegistered ? <NotRegisteredPopUp /> : null}</div>
+        <div>{isLoading && !isNotRegistered ? <LoadingPopup /> : null}</div>
         <header>
           <h1 className="font-bold pt-1">Nutritify Facts</h1>
           <p>{props.amount} servings per container</p>

@@ -1,4 +1,4 @@
-import milkBox from "../assets/milkBox.png";
+import milkBox from "../../assets/milkBox.png";
 const MilkBox = (props) => {
   return (
     <div id="mockUpImagetoDownload">
