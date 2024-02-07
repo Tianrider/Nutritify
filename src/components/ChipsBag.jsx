@@ -1,4 +1,4 @@
-import chipBag from "../assets/chipBag.png";
+import chipBag from "../assets/chipsBag.png";
 const chipsBag = (props) => {
   return (
     <div id="mockUpImagetoDownload">
