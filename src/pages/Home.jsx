@@ -97,7 +97,7 @@ const Home = () => {
             </label>
             <select
               id="metric"
-              className="bg-gray-50 border text-center font-bold border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"
+              className="bg-gray-50 border text-center font-bold border-gray-300 text-gray-900 text-sm  rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-500 dark:focus:border-green-500"
               onChange={(e) => setMode(e.target.value)}
             >
               <option value="topTrack">Top Tracks</option>
@@ -185,67 +185,32 @@ const Home = () => {
         )}
 
         {imageUrl == null ? null : (
-          <div className="flex flex-col gap-5 mt-10 items-center">
-            <div className="inline-flex rounded-md shadow-sm" role="group">
-              <button
-                type="button"
-                className={`py-2 text-sm font-medium ${
-                  mockUpBackground === "chipsBag"
-                    ? "text-white bg-green-500"
-                    : "text-white bg-gray-700"
-                } border border-gray-500 rounded-l-lg hover:bg-green-700 focus:outline-none w-[60px] md:w-[90px]`}
-                onClick={() => setMockUpBackground("chipsBag")}
-              >
-                Duoritos
-              </button>
-              <button
-                type="button"
-                className={`py-2 text-sm font-medium ${
-                  mockUpBackground === "milkBox"
-                    ? "text-white bg-green-500"
-                    : "text-white bg-gray-700"
-                } border-t border-b border-gray-500  hover:bg-green-700 focus:outline-none w-[60px] md:w-[90px]`}
-                onClick={() => setMockUpBackground("milkBox")}
-              >
-                Milk
-              </button>
-              <button
-                type="button"
-                className={`py-2 text-sm font-medium ${
-                  mockUpBackground === "matcha"
-                    ? "text-white bg-green-500"
-                    : "text-white bg-gray-700"
-                } border border-gray-500  hover:bg-green-700 focus:outline-none w-[60px] md:w-[90px]`}
-                onClick={() => setMockUpBackground("matcha")}
-              >
-                Green Tea
-              </button>
-              <button
-                type="button"
-                className={`py-2 text-sm font-medium ${
-                  mockUpBackground === "ramyun"
-                    ? "text-white bg-green-500"
-                    : "text-white bg-gray-700"
-                } border-t border-b border-gray-500  hover:bg-green-700 focus:outline-none w-[60px] md:w-[90px]`}
-                onClick={() => setMockUpBackground("ramyun")}
-              >
-                Ramyun
-              </button>
-              <button
-                type="button"
-                className={`py-2 text-sm font-medium ${
-                  mockUpBackground === "nutriSari"
-                    ? "text-white bg-green-500"
-                    : "text-white bg-gray-700"
-                } border border-gray-500 rounded-r-lg hover:bg-green-700 focus:outline-none w-[60px] md:w-[90px]`}
-                onClick={() => setMockUpBackground("nutriSari")}
-              >
-                Nutria Sari
-              </button>
-            </div>
+          <div className="flex flex-col gap-1 mt-10 items-center">
+            <ButtonGroup
+              text1="Duoritos"
+              active1={mockUpBackground === "chipsBag"}
+              onClick1={() => setMockUpBackground("chipsBag")}
+              text2="Milk"
+              active2={mockUpBackground === "milkBox"}
+              onClick2={() => setMockUpBackground("milkBox")}
+              text3="Green Tea"
+              active3={mockUpBackground === "matcha"}
+              onClick3={() => setMockUpBackground("matcha")}
+            />
+            <ButtonGroup
+              text1="Ramyun"
+              active1={mockUpBackground === "ramyun"}
+              onClick1={() => setMockUpBackground("ramyun")}
+              text2="NutriaSari"
+              active2={mockUpBackground === "nutriSari"}
+              onClick2={() => setMockUpBackground("nutriSari")}
+              text3="Picko"
+              active3={mockUpBackground === "pocky"}
+              onClick3={() => setMockUpBackground("pocky")}
+            />
             <button
               type="button"
-              className="shadow-lg shadow-gray-700 px-3 py-3.5 w-[%] text-sm font-medium text-white inline-flex items-center bg-green-800 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-green-300 rounded-lg text-center"
+              className="shadow-lg mt-6 shadow-gray-700 px-3 py-3.5 w-[%] text-sm font-medium text-white inline-flex items-center bg-green-800 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-green-300 rounded-lg text-center"
               onClick={handleMockupDownload}
             >
               <img src={downloadIcon} className="w-6 mr-3"></img>
