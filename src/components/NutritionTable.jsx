@@ -5,6 +5,7 @@ import LoadingPopup from "./LoadingPopup";
 import paperOne from "../assets/paperOne.png";
 import paperTwo from "../assets/paperTwo.png";
 import NotRegisteredPopUp from "./NotRegisteredPopUp";
+import spotifyIcon from "../assets/Spotify_Icon.png";
 
 const NutritionTable = (props) => {
   const clientID = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
@@ -93,6 +94,7 @@ const NutritionTable = (props) => {
       setIsNotRegistered(true);
     }
     const data = await result.json();
+    console.log(data);
     return data;
   };
 
@@ -130,6 +132,7 @@ const NutritionTable = (props) => {
           id: item.track.id,
           name: item.track.name,
           artist: item.track.artists[0].name,
+          link: item.track.external_urls.spotify,
           duration: formattedDuration,
           genre: genre,
         };
@@ -163,6 +166,7 @@ const NutritionTable = (props) => {
           id: item.id,
           name: item.name,
           artist: item.artists[0].name,
+          link: item.external_urls.spotify,
           duration: formattedDuration,
           genre: genre,
         };
@@ -191,6 +195,7 @@ const NutritionTable = (props) => {
         id: item.id,
         name: item.name,
         artist: "",
+        link: item.external_urls.spotify,
         duration: item.popularity,
         genre: item.genres[0],
       };
@@ -269,12 +274,18 @@ const NutritionTable = (props) => {
         <div>{isLoading && !isNotRegistered ? <LoadingPopup /> : null}</div>
         <header>
           <h1 className="font-bold pt-1">Nutritify Facts</h1>
-          <p>{props.amount} servings per container</p>
-          <p>
-            <strong>
-              Serving size <span>2/3 cup</span>
-            </strong>
-          </p>
+          <div className="flex justify-between">
+            {" "}
+            <div>
+              <p>{props.amount} servings per container</p>
+              <p>
+                <strong>Serving size </strong>
+              </p>
+            </div>
+            <span className="pt-[1px]">
+              <img src={spotifyIcon} className="h-[30px] mr-2"></img>
+            </span>
+          </div>
         </header>
         <table className="main-nutrients">
           <thead>
@@ -303,6 +314,7 @@ const NutritionTable = (props) => {
                   title={song.name}
                   artist={song.artist}
                   duration={song.duration}
+                  link={song.link}
                 />
               );
             })}
